@@ -42,4 +42,20 @@ dev_dependencies:
 
 flutter: 
   uses-material-design: true
+  assets:
+    - assets/
+    - assets/fonts/
+  fonts:
+    - family: sans_medium
+      fonts:
+        - asset: assets/fonts/expenso_sans_medium.ttf
+    - family: sans_bold
+      fonts:
+        - asset: assets/fonts/expenso_sans_bold.ttf
+    - family: one_400
+      fonts:
+        - asset: assets/fonts/expenso_one_400.ttf
+    - family: one_700
+      fonts:
+        - asset: assets/fonts/expenso_one_700.ttf
 
