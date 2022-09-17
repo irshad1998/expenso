@@ -2,20 +2,19 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 
-import '../controllers/home_controller.dart';
+import '../controllers/signup_controller.dart';
 
-class HomeView extends GetView<HomeController> {
+class SignupView extends GetView<SignupController> {
   @override
   Widget build(BuildContext context) {
-    controller.initialized;
     return Scaffold(
       appBar: AppBar(
-        title: Text('HomeView'),
+        title: Text('SignupView'),
         centerTitle: true,
       ),
       body: Center(
         child: Text(
-          'HomeView is working',
+          'SignupView is working',
           style: TextStyle(fontSize: 20),
         ),
       ),
