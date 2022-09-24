@@ -9,10 +9,8 @@ class OnboardController extends GetxController {
   PageController pageController = PageController();
 
   void nextPage() {
-    pageController.nextPage(
-        duration: Duration(milliseconds: 300), curve: Curves.easeIn);
-    if (pageController.page?.toInt() == 1 ||
-        pageController.page?.toInt() == 2) {
+    pageController.nextPage(duration: Duration(milliseconds: 300), curve: Curves.easeIn);
+    if (pageController.page?.toInt() == 1 || pageController.page?.toInt() == 2) {
       actionButtonText.value = 'Done';
     } else {
       actionButtonText.value = 'Next';
