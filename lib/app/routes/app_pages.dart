@@ -6,6 +6,8 @@ import 'package:expenso/app/modules/login/bindings/login_binding.dart';
 import 'package:expenso/app/modules/login/views/login_view.dart';
 import 'package:expenso/app/modules/onboard/bindings/onboard_binding.dart';
 import 'package:expenso/app/modules/onboard/views/onboard_view.dart';
+import 'package:expenso/app/modules/otp_verification/bindings/otp_verification_binding.dart';
+import 'package:expenso/app/modules/otp_verification/views/otp_verification_view.dart';
 import 'package:expenso/app/modules/signup/bindings/signup_binding.dart';
 import 'package:expenso/app/modules/signup/views/signup_view.dart';
 import 'package:expenso/app/modules/splash/bindings/splash_binding.dart';
@@ -43,6 +45,11 @@ class AppPages {
       name: _Paths.SIGNUP,
       page: () => SignupView(),
       binding: SignupBinding(),
+    ),
+    GetPage(
+      name: _Paths.OTP_VERIFICATION,
+      page: () => OtpVerificationView(),
+      binding: OtpVerificationBinding(),
     ),
   ];
 }

@@ -1,3 +1,4 @@
+import 'package:country_codes/country_codes.dart';
 import 'package:expenso/app/constants/colors.dart';
 import 'package:expenso/app/data/app_constants.dart';
 import 'package:flutter/material.dart';
@@ -12,6 +13,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Hive.initFlutter();
   await Hive.openBox(AppConstants.configName);
+  await CountryCodes.init(); // Optionally, you may provide a `Locale` to get countrie's localizadName
   runApp(
     GetMaterialApp(
       debugShowCheckedModeBanner: false,
