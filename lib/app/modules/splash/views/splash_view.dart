@@ -41,8 +41,7 @@ class SplashView extends GetView<SplashController> {
               right: width * 0.4,
               child: Text(
                 Strings.appWord,
-                style: TextStyle(
-                    fontSize: 10.s, fontFamily: 'one_700', color: Colors.black),
+                style: TextStyle(fontSize: 10.s, fontFamily: 'one_700', color: Colors.black),
               ),
             ),
             Positioned(
