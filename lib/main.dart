@@ -1,3 +1,4 @@
+import 'package:expenso/app/constants/colors.dart';
 import 'package:expenso/app/data/app_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
@@ -18,6 +19,14 @@ void main() async {
       title: "Application",
       initialRoute: AppPages.INITIAL,
       getPages: AppPages.routes,
+      theme: ThemeData(
+          useMaterial3: true,
+          brightness: Brightness.light,
+          primaryColor: AppColors.primary,
+          pageTransitionsTheme: const PageTransitionsTheme(builders: {
+            TargetPlatform.iOS: ZoomPageTransitionsBuilder(),
+            TargetPlatform.android: ZoomPageTransitionsBuilder(),
+          })),
     ),
   );
 }
