@@ -1,20 +1,25 @@
+import 'package:expenso/app/data/countries.dart';
+import 'package:expenso/app/widgets/country_picker.dart';
 import 'package:get/get.dart';
 
 class SignupController extends GetxController {
-  //TODO: Implement SignupController
+  final initialCountry = 'in'.obs;
+  final initialCountryCode = '91'.obs;
 
-  final count = 0.obs;
+  void setCountry(Country country) {
+    initialCountry.value = country.code;
+    initialCountryCode.value = country.dialCode;
+  }
+
   @override
   void onInit() {
     super.onInit();
+    Get.put(CountryPickerController());
   }
 
   @override
-  void onReady() {
-    super.onReady();
+  void dispose() {
+    Get.delete<CountryPickerController>(force: true);
+    super.dispose();
   }
-
-  @override
-  void onClose() {}
-  void increment() => count.value++;
 }
