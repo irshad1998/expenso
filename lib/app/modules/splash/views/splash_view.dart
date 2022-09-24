@@ -1,5 +1,6 @@
 import 'package:expenso/app/constants/colors.dart';
 import 'package:expenso/app/constants/strings.dart';
+import 'package:expenso/app/utilities/screen.dart';
 import 'package:expenso/app/utilities/wawe.dart';
 import 'package:flutter/material.dart';
 
@@ -33,14 +34,15 @@ class SplashView extends GetView<SplashController> {
               text: Strings.appName,
               waveColor: AppColors.primary,
               boxBackgroundColor: Colors.white,
-              textStyle: TextStyle(fontSize: 40, fontFamily: 'sans_bold'),
+              textStyle: TextStyle(fontSize: 40.s, fontFamily: 'sans_bold'),
             ),
             Positioned(
               top: height * 0.518,
               right: width * 0.4,
               child: Text(
                 Strings.appWord,
-                style: TextStyle(fontSize: 10, fontFamily: 'one_700', color: Colors.black),
+                style: TextStyle(
+                    fontSize: 10.s, fontFamily: 'one_700', color: Colors.black),
               ),
             ),
             Positioned(
