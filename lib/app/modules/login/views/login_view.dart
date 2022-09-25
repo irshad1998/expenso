@@ -179,7 +179,7 @@ class LoginView extends GetView<LoginController> {
                     color: AppColors.primary,
                     child: InkWell(
                       highlightColor: Colors.white,
-                      onTap: () => Get.toNamed(Routes.OTP_VERIFICATION),
+                      onTap: () => controller.generateOtpForLogin(),
                       child: Container(
                         width: width,
                         height: 54.h,
