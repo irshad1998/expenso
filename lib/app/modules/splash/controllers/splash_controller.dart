@@ -12,7 +12,12 @@ class SplashController extends GetxController {
   void navigate() async {
     var onBoardIsDone = LocalStorage.instance.getValue(AppConstants.onboardIsDone);
     if (onBoardIsDone != null && onBoardIsDone) {
-      Timer(_splashDuration, () => Get.offNamed(Routes.LOGIN));
+      var userToken = LocalStorage.instance.getValue(AppConstants.authenticationToken);
+      if (userToken != null) {
+        Timer(_splashDuration, () => Get.offNamed(Routes.HOME));
+      } else {
+        Timer(_splashDuration, () => Get.offNamed(Routes.LOGIN));
+      }
     } else {
       Timer(_splashDuration, () => Get.offNamed(Routes.ONBOARD));
     }
