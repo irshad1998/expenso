@@ -1,8 +1,3 @@
-import 'package:expenso/app/constants/colors.dart';
-import 'package:expenso/app/constants/dimens.dart';
-import 'package:expenso/app/constants/strings.dart';
-import 'package:expenso/app/routes/app_pages.dart';
-import 'package:expenso/app/utilities/screen.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
@@ -10,6 +5,10 @@ import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 import 'package:pinput/pinput.dart';
 
+import 'package:expenso/app/constants/colors.dart';
+import 'package:expenso/app/constants/dimens.dart';
+import 'package:expenso/app/constants/strings.dart';
+import 'package:expenso/app/utilities/screen.dart';
 import '../controllers/otp_verification_controller.dart';
 
 class OtpVerificationView extends GetView<OtpVerificationController> {
@@ -56,6 +55,7 @@ class OtpVerificationView extends GetView<OtpVerificationController> {
                 ),
                 SizedBox(height: 20),
                 Pinput(
+                  controller: controller.otpController,
                   length: 4,
                   defaultPinTheme: PinTheme(
                     textStyle: TextStyle(fontSize: 28.s, fontFamily: 'one_700'),
@@ -89,7 +89,7 @@ class OtpVerificationView extends GetView<OtpVerificationController> {
                   color: AppColors.primary,
                   child: InkWell(
                     highlightColor: Colors.white,
-                    onTap: () => Get.toNamed(Routes.HOME),
+                    onTap: () => controller.completeSignup(),
                     child: Container(
                       width: width,
                       height: 54.h,

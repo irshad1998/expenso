@@ -26,6 +26,7 @@ class SplashController extends GetxController {
   @override
   void onInit() {
     super.onInit();
+    LocalStorage.instance.deleteValue(AppConstants.authenticationToken);
     navigate();
   }
 }
