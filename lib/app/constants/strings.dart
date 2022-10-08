@@ -20,6 +20,9 @@ class Strings {
   static const String loginToContinue = 'Login to continue.';
   static const String dontHaveAccount = 'Don\'t have an account? ';
   static const String register = ' Register';
+  static const String pleaseTryAfter30Seconds = 'Please try again after 30 seconds';
+  static const String invalidPhoneNumber = 'Invalid phone number';
+  static const String otpAlreadySent = 'OTP already sent';
 
   /// [OTP VERIFICATION PAGE]
   static const String otpVerification = 'OTP Verification';
@@ -27,4 +30,6 @@ class Strings {
   static const String didntRecOtp = 'Disdn\'t recieved OTP? ';
   static const String resendOtp = ' Resend OTP';
   static const String verifyAndProceed = 'VERIFY & PROCEED';
+  static const String signupSuccess = 'Signup successful';
+  static const String loginSuccess = 'Login successful';
 }

@@ -1,18 +1,18 @@
-class OtpVerificationResponse {
-  OtpVerificationResponse({
+class LoginMobileGenerateOtpSuccessResponse {
+  LoginMobileGenerateOtpSuccessResponse({
     this.status,
     this.message,
     this.data,
   });
 
-  OtpVerificationResponse.fromJson(dynamic json) {
+  LoginMobileGenerateOtpSuccessResponse.fromJson(dynamic json) {
     status = json['status'];
     message = json['message'];
-    data = json['data'] != null ? SignupOtpVerificationData.fromJson(json['data']) : null;
+    data = json['data'] != null ? OtpData.fromJson(json['data']) : null;
   }
   bool? status;
   String? message;
-  SignupOtpVerificationData? data;
+  OtpData? data;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
@@ -25,19 +25,19 @@ class OtpVerificationResponse {
   }
 }
 
-class SignupOtpVerificationData {
-  SignupOtpVerificationData({
-    this.token,
+class OtpData {
+  OtpData({
+    this.otp,
   });
 
-  SignupOtpVerificationData.fromJson(dynamic json) {
-    token = json['token'];
+  OtpData.fromJson(dynamic json) {
+    otp = json['otp'];
   }
-  String? token;
+  String? otp;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
-    map['token'] = token;
+    map['otp'] = otp;
     return map;
   }
 }

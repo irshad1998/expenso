@@ -15,33 +15,39 @@ import 'package:expenso/app/widgets/custom_snackbar.dart';
 class SignupController extends GetxController {
   final initialCountry = 'in'.obs;
   final initialCountryCode = '91'.obs;
+  final phoneNumberLength = 10.obs;
 
   void setCountry(Country country) {
     initialCountry.value = country.code;
     initialCountryCode.value = country.dialCode;
+    phoneNumberLength.value = country.maxLength;
   }
 
   final mobileTextEditingController = TextEditingController();
 
   void generateOtpForLogin() async {
-    var _requestData = {'mobile': mobileTextEditingController.text, 'countryCode': '+${initialCountryCode}'};
-    await XHttp.request(Endpoints.generateSignupOtp, data: _requestData, method: XHttp.POST).then((result) {
-      if (result.success) {
-        var data = GenerateOtpSuccessResponse.fromJson(jsonDecode(result.data));
-        SnackbarSuccess(
-          titleText: 'Success!',
-          messageText: data.data?.otp ?? '',
-        ).show();
-        Get.toNamed(Routes.OTP_VERIFICATION,
-            arguments: {'isSignup': true, 'requestData': _requestData, 'otp': data.data?.otp});
-      } else {
-        var data = ExistOtpResponse.fromJson(jsonDecode(result.data));
-        SnackbarFailure(
-          titleText: 'Error!',
-          messageText: data.message ?? '',
-        ).show();
-      }
-    });
+    if (mobileTextEditingController.text.length == phoneNumberLength.value) {
+      var _requestData = {'mobile': mobileTextEditingController.text, 'countryCode': '+${initialCountryCode}'};
+      await XHttp.request(Endpoints.generateSignupOtp, data: _requestData, method: XHttp.POST).then((result) {
+        if (result.success) {
+          var data = GenerateOtpSuccessResponse.fromJson(jsonDecode(result.data));
+          SnackbarSuccess(
+            titleText: 'Success!',
+            messageText: data.data?.otp ?? '',
+          ).show();
+          Get.toNamed(Routes.OTP_VERIFICATION,
+              arguments: {'isSignup': true, 'requestData': _requestData, 'otp': data.data?.otp});
+        } else {
+          var data = ExistOtpResponse.fromJson(jsonDecode(result.data));
+          SnackbarFailure(
+            titleText: 'Error!',
+            messageText: data.message ?? '',
+          ).show();
+        }
+      });
+    } else {
+      SnackbarFailure(titleText: 'Error!', messageText: 'Invalid phone number').show();
+    }
   }
 
   @override

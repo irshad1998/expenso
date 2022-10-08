@@ -1,5 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
@@ -61,6 +62,10 @@ class SignupView extends GetView<SignupController> {
                         Expanded(
                           child: Obx(
                             () => TextField(
+                              // maxLength: controller.phoneNumberLength,
+                              inputFormatters: [
+                                LengthLimitingTextInputFormatter(controller.phoneNumberLength.value),
+                              ],
                               controller: controller.mobileTextEditingController,
                               style: TextStyle(fontSize: 18, fontFamily: 'one_700', letterSpacing: 1),
                               keyboardType: TextInputType.phone,

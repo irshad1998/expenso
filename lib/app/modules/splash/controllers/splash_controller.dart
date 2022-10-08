@@ -1,9 +1,9 @@
 import 'dart:async';
 
-import 'package:expenso/app/data/app_constants.dart';
-import 'package:expenso/app/data/local_storage.dart';
 import 'package:get/get.dart';
 
+import 'package:expenso/app/data/app_constants.dart';
+import 'package:expenso/app/data/local_storage.dart';
 import 'package:expenso/app/routes/app_pages.dart';
 
 class SplashController extends GetxController {
@@ -26,7 +26,6 @@ class SplashController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    LocalStorage.instance.deleteValue(AppConstants.authenticationToken);
     navigate();
   }
 }

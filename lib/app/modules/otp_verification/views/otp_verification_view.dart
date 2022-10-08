@@ -89,7 +89,7 @@ class OtpVerificationView extends GetView<OtpVerificationController> {
                   color: AppColors.primary,
                   child: InkWell(
                     highlightColor: Colors.white,
-                    onTap: () => controller.completeSignup(),
+                    onTap: controller.isSignup ? () => controller.completeSignup() : () => controller.completeLogin(),
                     child: Container(
                       width: width,
                       height: 54.h,
