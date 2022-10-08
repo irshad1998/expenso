@@ -1,5 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
@@ -7,7 +8,6 @@ import 'package:get/get.dart';
 import 'package:expenso/app/constants/colors.dart';
 import 'package:expenso/app/constants/dimens.dart';
 import 'package:expenso/app/constants/strings.dart';
-import 'package:expenso/app/routes/app_pages.dart';
 import 'package:expenso/app/utilities/screen.dart';
 import 'package:expenso/app/widgets/country_picker.dart';
 
@@ -62,6 +62,11 @@ class SignupView extends GetView<SignupController> {
                         Expanded(
                           child: Obx(
                             () => TextField(
+                              // maxLength: controller.phoneNumberLength,
+                              inputFormatters: [
+                                LengthLimitingTextInputFormatter(controller.phoneNumberLength.value),
+                              ],
+                              controller: controller.mobileTextEditingController,
                               style: TextStyle(fontSize: 18, fontFamily: 'one_700', letterSpacing: 1),
                               keyboardType: TextInputType.phone,
                               cursorColor: AppColors.primary,
@@ -178,7 +183,7 @@ class SignupView extends GetView<SignupController> {
                     color: AppColors.primary,
                     child: InkWell(
                       highlightColor: Colors.white,
-                      onTap: () => Get.toNamed(Routes.OTP_VERIFICATION),
+                      onTap: () => controller.generateOtpForLogin(),
                       child: Container(
                         width: width,
                         height: 54.h,

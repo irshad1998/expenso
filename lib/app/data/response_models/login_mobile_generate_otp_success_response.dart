@@ -1,18 +1,18 @@
-class GenerateOtpSuccessResponse {
-  GenerateOtpSuccessResponse({
+class LoginMobileGenerateOtpSuccessResponse {
+  LoginMobileGenerateOtpSuccessResponse({
     this.status,
     this.message,
     this.data,
   });
 
-  GenerateOtpSuccessResponse.fromJson(dynamic json) {
+  LoginMobileGenerateOtpSuccessResponse.fromJson(dynamic json) {
     status = json['status'];
     message = json['message'];
-    data = json['data'] != null ? GeneratedOtpData.fromJson(json['data']) : null;
+    data = json['data'] != null ? OtpData.fromJson(json['data']) : null;
   }
   bool? status;
   String? message;
-  GeneratedOtpData? data;
+  OtpData? data;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
@@ -25,12 +25,12 @@ class GenerateOtpSuccessResponse {
   }
 }
 
-class GeneratedOtpData {
-  GeneratedOtpData({
+class OtpData {
+  OtpData({
     this.otp,
   });
 
-  GeneratedOtpData.fromJson(dynamic json) {
+  OtpData.fromJson(dynamic json) {
     otp = json['otp'];
   }
   String? otp;

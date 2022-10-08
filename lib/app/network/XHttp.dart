@@ -195,7 +195,7 @@ class XHttp {
     };
     _dealRequestInfo(logData, RESPONSE_TYPE_STR);
     if (!isSuccess) {
-      Toast.show(msg, type: Toast.ERROR);
+      Toast.hide();
     } else {
       Toast.hide();
     }
@@ -461,7 +461,7 @@ class XHttp {
     try {
       response = await dio?.request(
         url,
-        options: options ?? Options(method: method, contentType: Headers.formUrlEncodedContentType),
+        options: options ?? Options(method: method, contentType: Headers.jsonContentType),
         queryParameters: queryParameters,
         data: data,
         cancelToken: isCancelWhiteList ? whiteListCancelToken : cancelToken,

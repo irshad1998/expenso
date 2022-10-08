@@ -5,4 +5,6 @@ class Endpoints {
 
   static const String v = '/v1/';
   static const String generateSignupOtp = '${v}temporory-signup';
+  static const String verifySignupOtp = '${v}verify-signup-otp';
+  static const String login = '${v}login';
 }

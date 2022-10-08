@@ -1,12 +1,12 @@
-import 'package:expenso/app/constants/colors.dart';
-import 'package:expenso/app/constants/dimens.dart';
-import 'package:expenso/app/constants/strings.dart';
-import 'package:expenso/app/utilities/screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
 import 'package:get/get.dart';
 
+import 'package:expenso/app/constants/colors.dart';
+import 'package:expenso/app/constants/dimens.dart';
+import 'package:expenso/app/constants/strings.dart';
+import 'package:expenso/app/utilities/screen.dart';
 import '../controllers/home_controller.dart';
 
 class HomeView extends GetView<HomeController> {
