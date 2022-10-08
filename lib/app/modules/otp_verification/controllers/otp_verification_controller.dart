@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:async';
 
 import 'package:flutter/cupertino.dart';
 
@@ -19,6 +20,25 @@ class OtpVerificationController extends GetxController {
   var isSignup;
 
   final otpController = TextEditingController();
+
+  late Timer _timer;
+  var secondsRemaining = 30.obs;
+  var isResendButtonDisabled = true.obs;
+
+  void startTimer() {
+    isResendButtonDisabled.value = false;
+    _timer = Timer.periodic(
+      const Duration(seconds: 1),
+      (timer) {
+        if (secondsRemaining.value > 0) {
+          secondsRemaining.value = secondsRemaining.value - 1;
+        } else {
+          _timer.cancel();
+          isResendButtonDisabled.value = true;
+        }
+      },
+    );
+  }
 
   void completeSignup() async {
     var _requestData = {
@@ -62,8 +82,33 @@ class OtpVerificationController extends GetxController {
     });
   }
 
+  void resendOtp() async {
+    secondsRemaining.value = 30;
+    var _requestData = {'countryCode': countryCode, 'mobile': mobile};
+    if (isSignup) {
+      await XHttp.request(Endpoints.generateSignupOtp, data: _requestData, method: XHttp.POST).then((result) {
+        if (result.success) {
+          startTimer();
+          SnackbarSuccess(titleText: 'OTP Generated', messageText: 'OTP send to your mobile number').show();
+        } else {
+          SnackbarFailure(titleText: 'Error', messageText: 'Something wen\'t wrong').show();
+        }
+      });
+    } else {
+      await XHttp.request(Endpoints.login, method: XHttp.POST, data: _requestData).then((result) {
+        if (result.success) {
+          startTimer();
+          SnackbarSuccess(titleText: 'OTP Generated', messageText: 'OTP send to your mobile number').show();
+        } else {
+          SnackbarFailure(titleText: 'Error', messageText: 'Something wen\'t wrong').show();
+        }
+      });
+    }
+  }
+
   @override
   void onInit() {
+    startTimer();
     mobile = Get.arguments['requestData']['mobile'];
     countryCode = Get.arguments['requestData']['countryCode'];
     isSignup = Get.arguments['isSignup'];

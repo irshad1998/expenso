@@ -27,7 +27,7 @@ class Strings {
   /// [OTP VERIFICATION PAGE]
   static const String otpVerification = 'OTP Verification';
   static const String otpSentTo = 'Please enter the OTP sent to ';
-  static const String didntRecOtp = 'Disdn\'t recieved OTP? ';
+  static const String didntRecOtp = 'Didn\'t recieved OTP? ';
   static const String resendOtp = ' Resend OTP';
   static const String verifyAndProceed = 'VERIFY & PROCEED';
   static const String signupSuccess = 'Signup successful';

@@ -71,17 +71,24 @@ class OtpVerificationView extends GetView<OtpVerificationController> {
             ),
             Column(
               children: [
-                RichText(
-                  text: TextSpan(
-                    text: Strings.didntRecOtp,
-                    style: TextStyle(fontSize: 12.s, fontFamily: 'one_400', color: Colors.black),
-                    children: <TextSpan>[
-                      TextSpan(
-                        text: Strings.resendOtp,
-                        style: TextStyle(fontSize: 14.s, fontFamily: 'one_700', color: Colors.blue),
-                        recognizer: TapGestureRecognizer()..onTap = () {},
-                      ),
-                    ],
+                Obx(
+                  () => RichText(
+                    text: TextSpan(
+                      text: Strings.didntRecOtp,
+                      style: TextStyle(fontSize: 12.s, fontFamily: 'one_400', color: Colors.black),
+                      children: <TextSpan>[
+                        TextSpan(
+                          text: !controller.isResendButtonDisabled.value
+                              ? '00:${controller.secondsRemaining.value > 9 ? controller.secondsRemaining.value : '0${controller.secondsRemaining.value}'}'
+                              : Strings.resendOtp,
+                          style: TextStyle(
+                              fontSize: 14.s,
+                              fontFamily: !controller.isResendButtonDisabled.value ? 'one_400' : 'one_700',
+                              color: !controller.isResendButtonDisabled.value ? Colors.grey.shade500 : Colors.blue),
+                          recognizer: TapGestureRecognizer()..onTap = () => controller.resendOtp(),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
                 SizedBox(height: 10),
